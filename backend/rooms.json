@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Luxury Retreat Hotel",
+        "imageUrl": [
+            "https://www.lottehotel.com/content/dam/lotte-hotel/lotte/yangon/accommodation/hotel/suite/royalsuite/180712-49-2000-acc-yangon-hotel.jpg.thumb.768.768.jpg",
+            "https://www.lottehotel.com/content/dam/lotte-hotel/lotte/yangon/accommodation/hotel/suite/presidentialsuite/180712-43-2000-acc-yangon-hotel.jpg.thumb.768.768.jpg",
+            "https://www.lottehotel.com/content/dam/lotte-hotel/lotte/seoul/accommodation/executive-tower/standard/premier-room/181026-12-2000-roo-LTSE.jpg.thumb.768.768.jpg",
+            "https://www.lottehotel.com/content/dam/lotte-hotel/lotte/seoul/accommodation/executive-tower/standard/premier-room/181026-7-2000-roo-LTSE.jpg.thumb.1920.1920.jpg"
+        ],
+        "rentPerday": 4000,
+        "type": "Suite",
+        "maxPeople": 3,
+        "phoneNumber": "0923456789",
+        "currentBooking": []
+    },
+    {
+        "name": "Seaside Paradise Resort",
+        "imageUrl": [
+            "https://www.eliaermouhotel.com/uploads/images/303.jpg?v=202007101757",
+            "https://amorgoshotel.com/wp-content/uploads/2014/12/Amorgos-Standard-Room1-e1464286427430.jpg",
+            "https://www.eliaermouhotel.com/uploads/photos/D1024/2019/02/standardroom_5455.jpg",
+            "https://www.eliaermouhotel.com/uploads/photos/D1024/2019/02/deluxefamilyroom_1224.jpg"
+        ],
+        "rentPerday": 2500,
+        "type": "Standard",
+        "maxPeople": 2,
+        "phoneNumber": "0854321098",
+        "currentBooking": []
+    },
+    {
+        "name": "Urban Oasis Hotel",
+        "imageUrl": [
+            "https://www.marinabaysands.com/content/dam/revamp/hotel/rooms-suites/deluxe-room/cityview-bedroom-1920x843.jpg",
+            "https://www.marinabaysands.com/content/dam/marinabaysands/hotel/deluxe-room/masthead.png",
+            "https://www.marinabaysands.com/content/dam/marinabaysands/hotel/deluxe-room/deluxe-room-bathroom-1920x1080.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGHDQIhQQU3BkblAN1jlZX0Gf1-MVP6OQcKQgF_yc8v0PmwMsOs80dI8TN1Wyj5FRzRAA&usqp=CAU"
+        ],
+        "rentPerday": 1800,
+        "type": "Deluxe",
+        "maxPeople": 4,
+        "phoneNumber": "0923456789",
+        "currentBooking": []
+    },
+    {
+        "name": "Family Getaway Inn",
+        "imageUrl": [
+            "https://www.centrepoint.com/Gallery/Silom/Accommodation/SizeS/Silom-Family_Suite-90_sqm.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_OTkkdhmfF2nFNd6k3Vm_E-q-AMOPTFGGBBlb9jDALDKqdO9wZuTLGNgDgLAIJGb7qPw&usqp=CAU",
+            "https://www.centrepoint.com/japan/Gallery/Silom/Accommodation/SizeS/Silom-River_Grand_Deluxe-66_sqm-2.jpg",
+            "https://www.centrepoint.com/Gallery/Silom/Accommodation/SizeS/Silom-One_Bedroom_Grand_Suite-90_sqm-2.jpg"
+        ],
+        "rentPerday": 2200,
+        "type": "Family Suite",
+        "maxPeople": 5,
+        "phoneNumber": "0712345678",
+        "currentBooking": []
+    }
+]
