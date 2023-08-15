@@ -1,20 +1,15 @@
 const express = require("express");
 const router = express.Router();
+const Room = require("../models/room"); // Assuming your model is in "room.js"
 
-const Room = require('../models/room');
-
-// Add Api endpoints to fetch data
-
-router.get("/getRooms", async(req, res, next) =>{
-
-    try{
-        const rooms = await Room.find({})
-        return res.json({ rooms});
-
-    } 
-    catch (error){
-        return res.status(400).json({ message: error});
-    }  
+router.get("/getrooms", async (req, res) => {
+  try {
+    const rooms = await Room.find(); // Fetch all rooms
+    res.json(rooms);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
 });
 
 module.exports = router;
