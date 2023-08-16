@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from "react-router-dom";
 import Load from '../components/load';
+import Error from '../components/error';
 
 function Bookingscreen() {
   let { roomid } = useParams();
 
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState();
   const [room, setRoom] = useState({}); // Initialize as an object instead of an array
 
   useEffect(() => {
@@ -32,7 +33,7 @@ function Bookingscreen() {
 
       {/* Render room details here */}
       {loading && <p><Load/></p>}
-      {error && <p>Error loading room details</p>}
+      {error && <p><Error/></p>}
       {!loading && !error && (
         <div className='row justify-content-center mt-5 bs'>
           <div className='col-md-7 mt-2'>
