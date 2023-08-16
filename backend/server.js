@@ -5,6 +5,8 @@ const app = express();
 const dbconfig = require('./db');
 const roomsRoute = require("./routes/roomRoutes");
 
+app.use(express.json())
+
 app.use('/api/rooms', roomsRoute);
 
 

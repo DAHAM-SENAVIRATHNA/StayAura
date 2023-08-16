@@ -74,3 +74,11 @@ p{
   font-weight: 500;
   font-style: italic;
 }
+
+img{
+  border-radius: 5px;
+}
+
+.BeatLoader{
+  text-align: center;
+}

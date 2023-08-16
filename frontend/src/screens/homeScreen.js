@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Room from '../components/Room';
+import Load from '../components/load';
 
 const Homescreen = () => {
   const [data, setData] = useState([]);
@@ -28,7 +29,7 @@ const Homescreen = () => {
     <div className='container'>
       <div className='row justify-content-center mt-5'>
              {loading ? (
-          <h1>Loading......</h1>
+          <h1><Load/></h1>
         ) : error ? (
           <h1>Error</h1>
         ) : (
