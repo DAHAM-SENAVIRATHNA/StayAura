@@ -1,8 +1,8 @@
 import './App.css';
 import Navbar from './components/navbar';
-import { BrowserRouter, Route, Routes } from 'react-router-dom'; // Import Routes from react-router-dom
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomeScreen from './screens/homeScreen';
-import Room from './components/Room';
+import BookingScreen from './screens/bookingScreen';
 
 function App() {
   return (
@@ -11,7 +11,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/home' element={<HomeScreen/>} />
-          <Route path='/home1' element={<Room/>} />
+          {/* Use "path" instead of "Path" */}
+          <Route path="/book/:roomid" element={<BookingScreen/>} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -44,6 +44,7 @@ h1{
 .btn{
   background-color:#008080;
   color: white;
+  margin-right: 10px;
 }
 
 .bs{
@@ -66,4 +67,10 @@ p{
 
 .bigimg{
   height: 350px;
+}
+
+.description{
+  margin-top: 10px;
+  font-weight: 500;
+  font-style: italic;
 }

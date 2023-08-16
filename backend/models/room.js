@@ -32,7 +32,9 @@ const roomSchema = mongoose.Schema({
     description : {
         type: String,
         required: true
-    }
+    },
+
+
 }, 
 
 {
