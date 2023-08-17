@@ -9,13 +9,12 @@ app.use(express.json())
 
 const dbconfig = require('./db');
 const roomsRoute = require("./routes/roomRoutes");
-const usersRoute = require("./routes/userRoute"); 
+const usersRoute = require("./routes/userRoute");
 
 
 app.use('/api/rooms', roomsRoute);
 app.use('/api/users', usersRoute);
 
 
-app.listen(5000, ()=>
+app.listen(5000, () =>
     console.log("node server is started"));
-    

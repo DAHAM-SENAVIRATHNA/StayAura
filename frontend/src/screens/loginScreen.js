@@ -1,16 +1,30 @@
 import React, { useState } from 'react';
+import axios from "axios";
+
 
 function LoginScreen() {
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    function Login() {
+    async function Login() {
         const user = {
             email,
             password,
         };
-        console.log(user);
+        try {
+            const response = await axios.post('/api/users/login', user);
+
+            if (response.data.message === 'Login successful') {
+                console.log('Login successful');
+                // Handle success, maybe redirect or update UI
+            } else {
+                console.log('Login failed');
+                // Handle login failure, display error message
+            }
+        } catch (error) {
+            console.log('Error during login:', error);
+            // Handle error, display error message
+        }
     }
 
     return (
