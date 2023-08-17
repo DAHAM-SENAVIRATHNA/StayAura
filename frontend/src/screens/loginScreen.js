@@ -13,14 +13,13 @@ function LoginScreen() {
         const user = {
             email,
             password,
+            
         };
         try {
             setLoading(true);
             const response = (await axios.post('/api/users/login', user)).data;
+            localStorage.setItem('currentUser', JSON.stringify(response.user));
             setLoading(false);
-
-
-            localStorage.setItem('currentUser', JSON.stringify(response));
             window.location.href = '/home';
 
         } catch (error) {

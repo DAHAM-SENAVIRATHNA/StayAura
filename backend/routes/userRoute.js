@@ -31,7 +31,7 @@ router.post('/login', async (req, res) => {
     const passwordMatch = await bcrypt.compare(password, user.password);
 
     if (passwordMatch) {
-      res.json({ message: 'Login successful' });
+      res.json({user}); // Sending the user's name
     } else {
       res.status(400).json({ message: 'Invalid credentials' });
     }
@@ -40,7 +40,6 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
-
 
 module.exports = router;
 

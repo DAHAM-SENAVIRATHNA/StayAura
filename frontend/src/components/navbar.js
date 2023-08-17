@@ -1,27 +1,35 @@
-import React from 'react'
+import React from 'react';
 
-function navbar() {
+function Navbar() {
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    console.log('User data from localStorage:', user);
+
     return (
-        <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand" href="/home">STAY AURA</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+        <nav className="navbar navbar-expand-lg">
+            <a className="navbar-brand" href="/home">STAY AURA</a>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse " id="navbarNav">
-                <ul class="navbar-nav ml">
-                    <li class="nav-item active">
-                    <a class="nav-link"  href="/register">Register</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" style={{ marginLeft: '5px', marginRight:'10px' }} href="/login">Login</a>
-
-                    </li>
-                                   
+            <div className="collapse navbar-collapse" id="navbarNav">
+                <ul className="navbar-nav ml-auto">
+                    {user ? (
+                        <li className="nav-item">
+                            <span className="nav-link" style={{ color: 'white' }}>{user.name}</span>
+                        </li>
+                    ) : (
+                        <>
+                            <li className="nav-item active">
+                                <a className="nav-link" href="/register">Register</a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" style={{ marginLeft: '5px', marginRight: '10px' }} href="/login">Login</a>
+                            </li>
+                        </>
+                    )}
                 </ul>
             </div>
         </nav>
-
-    )
+    );
 }
 
-export default navbar
+export default Navbar;
