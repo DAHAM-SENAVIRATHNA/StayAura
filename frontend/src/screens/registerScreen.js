@@ -1,26 +1,31 @@
 import React, { useState } from 'react';
+import axios from "axios";
 
 function RegisterScreen() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [cPassword, setCPassword] = useState('');
-  const [agreedToTerms, setAgreedToTerms] = useState(false); // State for tracking agreement
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
 
-  function register() {
+  async function register() {
     if (!agreedToTerms) {
       alert("Please agree to the Terms of Service");
       return;
     }
 
-    if (password == cPassword) {
+    if (password === cPassword) {
       const user = {
         name,
         email,
         password,
-        cPassword
       };
-      console.log(user);
+      try {
+        const result = await axios.post('/api/users/register', user); // Correct URL
+        console.log(result.data); // Log the response
+      } catch (error) {
+        console.log(error);
+      }
     } else {
       alert('Password not matched');
     }
