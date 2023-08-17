@@ -4,6 +4,12 @@ function Navbar() {
     const user = JSON.parse(localStorage.getItem('currentUser'));
     console.log('User data from localStorage:', user);
 
+    function logout(){
+        localStorage.removeItem('currentUser');
+        window.location.href = '/login';
+
+    }
+
     return (
         <nav className="navbar navbar-expand-lg">
             <a className="navbar-brand" href="/home">STAY AURA</a>
@@ -11,10 +17,19 @@ function Navbar() {
                 <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav ml-auto">
+                <ul className="navbar-nav mr-4">
                     {user ? (
                         <li className="nav-item">
-                            <span className="nav-link" style={{ color: 'white' }}>{user.name}</span>
+                          
+                            <div class="dropdown">
+                                <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    {user.name}
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="/booking">Bookings</a>
+                                    <a class="dropdown-item" href="/login" onClick={logout}>Logout</a>
+                                </div>
+                            </div>
                         </li>
                     ) : (
                         <>
