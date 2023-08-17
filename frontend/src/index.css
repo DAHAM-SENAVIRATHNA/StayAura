@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: "#eee"
 }
 
 code {
@@ -81,4 +82,9 @@ img{
 
 .BeatLoader{
   text-align: center;
+}
+.form-control{
+  margin-top: 20px;
+  margin-bottom: 20px;
+
 }
