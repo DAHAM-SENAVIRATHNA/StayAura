@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Room from '../components/Room';
 import Load from '../components/load';
+import Error from '../components/error';
 
 const Homescreen = () => {
   const [data, setData] = useState([]);
@@ -27,11 +28,11 @@ const Homescreen = () => {
 
   return (
     <div className='container'>
-      <div className='row justify-content-center mt-5'>
+      <div className='row justify-content-center mt-4'>
              {loading ? (
           <h1><Load/></h1>
         ) : error ? (
-          <h1>Error</h1>
+          <h1><Error/></h1>
         ) : (
           data.map((room) => {
             return <div className="col-md-10 mt-4">
