@@ -35,17 +35,18 @@ function Bookingscreen() {
       {loading && <p><Load/></p>}
       {error && <p><Error/></p>}
       {!loading && !error && (
-        <div className='row justify-content-center mt-5 bs'>
-          <div className='col-md-7 mt-2'>
+        <div className='row justify-content-center mt-4 bs'>
+          <div className='col-md-6 mt-4'>
             <h1> {room.name}</h1>
-            <img src={room.imageUrl[0]} className='bigimg' alt='Room' />
-            <div className=' col-md-10 ml-4 mt-2'>
+            <img src={room.imageUrl[0]} className='bigimg' alt='Room' width='550' />
+
+            <div className='ml-4 mt-4'>
             <h5>Description</h5>
             <p> {room.description}</p>
             </div>
           </div>
 
-          <div className='col-md-4 mt-2' >
+          <div className='col-md-5 mt-4' >
             <div style={{textAlign:'right'}}>
             <h1>Booking Details</h1>
             <hr />
