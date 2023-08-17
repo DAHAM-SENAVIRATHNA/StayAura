@@ -16,14 +16,14 @@ function Load() {
   `;
 
     return (
-        <div style={{ marginTop: '250px' }}>
+        <div>
             <div className="sweet-loading text-center">
                 {/* Render the ClipLoader */}
                 <BeatLoader
                     color={'#008080'}
                     loading={loading}
                     css={override} // Apply the CSS using the override variable
-                    size={25}
+                    size={15}
                     aria-label="Loading Spinner"
                     data-testid="loader"
                     text-align={'center'}

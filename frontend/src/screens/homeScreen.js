@@ -30,7 +30,7 @@ const Homescreen = () => {
     <div className='container'>
       <div className='row justify-content-center mt-4'>
              {loading ? (
-          <h1><Load/></h1>
+          <h1 style={{marginTop: '250px'}}><Load/></h1>
         ) : error ? (
           <h1><Error/></h1>
         ) : (
