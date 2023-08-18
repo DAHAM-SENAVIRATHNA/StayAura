@@ -30,6 +30,17 @@ router.post('/bookroom', async (req, res) => {
     });
 
     const booking = await newbooking.save();
+
+    //save the bookings in the rooms inside as array to find noof bookings to that particular room
+    const roomval = await RoomModel.findOne({ _id: room._id });
+    roomval.currentBooking.push({ bookingid: booking._id, 
+      fromdate: moment(fromdate, 'DD-MM-YYYY').format('DD-MM-YYYY'),
+      todate: moment(todate, 'DD-MM-YYYY').format('DD-MM-YYYY'),
+      userid: userid,
+      status: booking.status
+    });
+
+    await roomval.save();
     console.log('Booking Saved:', booking);
     res.status(200).json({ message: 'Room Booked Successfully' });
   } catch (error) {
