@@ -18,6 +18,9 @@ function App() {
           <Route path="/book/:roomid/:fromdate/:todate" element={<BookingScreen/>} />
           <Route path='/register' element={<RegisterScreen/>} />
           <Route path='/login' element={<LoginScreen/>} />
+          
+
+          
 
         </Routes>
       </BrowserRouter>
