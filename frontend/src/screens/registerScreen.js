@@ -68,7 +68,6 @@ function RegisterScreen() {
                       <p className="text-center h1 fw-bold mb-3 mx-1 mx-md-4 mt-3">Sign up</p>
                       <form className="mx-1 mx-md-4">
                         <div className="d-flex flex-row align-items-center mb-3">
-                          <i className="fas fa-user fa-lg me-3 fa-fw"></i>
                           <div className="form-outline flex-fill mb-0">
                             <input className="form-control" placeholder='Name' value={name} onChange={(e) => setName(e.target.value)} />
                             <input className="form-control" placeholder='Email' value={email} onChange={(e) => setEmail(e.target.value)} />
