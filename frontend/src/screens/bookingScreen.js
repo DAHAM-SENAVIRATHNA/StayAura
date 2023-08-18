@@ -3,13 +3,21 @@ import axios from 'axios';
 import { useParams } from "react-router-dom";
 import Load from '../components/load';
 import Error from '../components/error';
+import moment from 'moment';
 
 function Bookingscreen() {
-  let { roomid } = useParams();
+  let { roomid, fromdate, todate } = useParams();
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
-  const [room, setRoom] = useState({}); // Initialize as an object instead of an array
+  const [room, setRoom] = useState({});
+  
+  // Convert route parameters to proper moment objects
+  const fromdates = moment(fromdate, 'DD-MM-YYYY');
+  const todates = moment(todate, 'DD-MM-YYYY');
+  
+  // Calculate the total number of days
+  const totaldays = todates.diff(fromdates, 'days');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,9 +60,9 @@ function Bookingscreen() {
             <hr />
             <b>
               <p>Name: </p>
-              <p>From Date: </p>
-              <p>To Date: </p>
-              <p>Max People: {room.maxPeople} </p>
+              <p>From Date:  {fromdate}</p>
+              <p>To Date:  {todate}</p>
+              <p>Max People:  {room.maxPeople} </p>
             </b>
             </div>
 
@@ -65,8 +73,8 @@ function Bookingscreen() {
               <b>
                 <h1>Amount</h1>
                 <hr />
-                <p>Total Days: </p>
-                <p>Rent per day: {room.rentperday}</p>
+                <p>Total Days:  {totaldays+1} </p>
+                <p>Rent per day:  {room.rentperday}</p>
                 <p>Total Amount: </p>
               </b>
             </div>

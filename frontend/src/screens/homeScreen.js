@@ -40,7 +40,7 @@ const Homescreen = () => {
   function filterByDate(dates){
   
     setfromDate((dates[0].format('DD-MM-YYYY')))
-    settoDate((dates[0].format('DD-MM-YYYY')))  
+    settoDate((dates[1].format('DD-MM-YYYY')))  
   }
 
   return (
@@ -60,7 +60,7 @@ const Homescreen = () => {
         ) : (
           data.map((room) => {
             return <div className="col-md-10 mt-4">
-              <Room room={room} />
+              <Room room={room} fromdate={fromdate}  todate={todate}/>
             </div>
           })
         )}
