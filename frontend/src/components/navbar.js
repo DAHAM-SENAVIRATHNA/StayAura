@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 function Navbar() {
     const user = JSON.parse(localStorage.getItem('currentUser'));
@@ -13,16 +15,19 @@ function Navbar() {
     return (
         <nav className="navbar navbar-expand-lg">
             <a className="navbar-brand" href="/home">STAY AURA</a>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-            </button>
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon"></span>
+</button>
+
+
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav mr-4">
                     {user ? (
-                        <li className="nav-item">
+                        <li className="nav-item dropdown">
                           
-                            <div class="dropdown">
-                                <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <div class="dropdown  ">
+                            <button class="btn dropdown-toggle  dropdown-button " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <FontAwesomeIcon style={{marginRight:'10px'}} icon={faUser} />
                                     {user.name}
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -44,6 +49,7 @@ function Navbar() {
                 </ul>
             </div>
         </nav>
+        
     );
 }
 

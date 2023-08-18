@@ -88,3 +88,13 @@ img{
   margin-bottom: 20px;
 
 }
+.dropdown{
+  margin-right: 8px;
+}
+.dropdown-toggle{
+  border: 0px solid #008080;
+}
+.dropdown-button:hover {
+  background-color: #333; /* Change this to the desired background color */
+  color: white; /* Change text color if needed */
+}
