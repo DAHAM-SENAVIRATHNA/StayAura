@@ -17,6 +17,11 @@ const bookingSchema = new mongoose.Schema(
       required: true
     },
 
+    username: {
+      type: String,
+      required: true
+    },
+
     fromdate: {
       type: String,
       required: true

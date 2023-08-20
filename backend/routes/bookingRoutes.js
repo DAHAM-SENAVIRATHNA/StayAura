@@ -7,7 +7,7 @@ const { v4: uuidv4 } = require('uuid');
 const stripe = require('stripe')('sk_test_51Ngl6bBXDV8VVuFBQs86b4ZeOLkWVuuZ2uevWn396M8HAPfbTWiaAslujgJ25rppCpHUD6CKCLLrXj2kxfHJMfDS00DdkAkfCY'); // Replace with your actual Stripe secret key
 
 router.post('/bookroom', async (req, res) => {
-  const { roomid, fromdate, todate, totalamount, totaldays, userid, token } = req.body;
+  const { roomid, fromdate, todate, totalamount, totaldays, userid, username, token } = req.body;
 
   try {
     // Create a customer in Stripe
@@ -41,6 +41,7 @@ router.post('/bookroom', async (req, res) => {
           roomid,
           room: room.name,
           userid,
+          username, 
           fromdate: moment(fromdate, 'DD-MM-YYYY').format('DD-MM-YYYY'),
           todate: moment(todate, 'DD-MM-YYYY').format('DD-MM-YYYY'),
           totalamount,
@@ -57,6 +58,7 @@ router.post('/bookroom', async (req, res) => {
           fromdate: moment(fromdate, 'DD-MM-YYYY').format('DD-MM-YYYY'),
           todate: moment(todate, 'DD-MM-YYYY').format('DD-MM-YYYY'),
           userid: userid,
+          username: username,
           status: booking.status
         });
 

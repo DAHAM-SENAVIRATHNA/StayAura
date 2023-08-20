@@ -54,6 +54,7 @@ async function onToken(token){
 
     roomid,
     userid: JSON.parse(localStorage.getItem('currentUser'))._id,
+    username: JSON.parse(localStorage.getItem('currentUser')).name,
     fromdate,
     todate,
     totalamount,
