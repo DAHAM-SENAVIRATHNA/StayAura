@@ -22,11 +22,11 @@ function Room({ room, fromdate, todate }) {
                 </p>
 
                 <div style={{ float: "right" }}>
+
                     {(fromdate && todate) && (
                         <Link to={`/book/${room._id}/${fromdate}/${todate}`}>
                         <button className="btn btn-primary mt-4">Book Now</button>
                     </Link>
-
                     )}
                     
                     <button className="btn btn-primary mt-4" onClick={handleShow}>View Details</button>
@@ -54,7 +54,7 @@ function Room({ room, fromdate, todate }) {
 
                                
                     </Carousel>
-                <p class="description">{room.description}</p>          
+                         
          
                 </Modal.Body>
                 <Modal.Footer>
