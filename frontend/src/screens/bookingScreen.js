@@ -5,6 +5,7 @@ import Load from '../components/load';
 import Error from '../components/error';
 import moment from 'moment'
 import StripeCheckout from 'react-stripe-checkout';
+import sweet from 'sweetalert2';
 
 function Bookingscreen() {
   const { roomid, fromdate, todate } = useParams();
@@ -64,10 +65,17 @@ async function onToken(token){
   };
 
   try {
+    // for success popup
+    setLoading(true);
     const response = await axios.post('/api/bookings/bookroom', bookingDetails, token);
-    console.log('Booking response:', response.data);
-  } catch (error) {
-   console.error('Error booking room:', error);
+    setLoading(false);
+    sweet.fire('Congratulations', 'Your Room Booked Successfully', 'success').then(result=>{
+      window.location.href= '/bookings'
+    })
+      } catch (error) {
+    setLoading(false);
+    sweet.fire('Oops', 'Something Went Wrong', 'error')
+
   }
 
 }

@@ -23,6 +23,7 @@
     "react-spinners": "^0.13.8",
     "react-stripe-checkout": "^2.6.3",
     "spinners": "^1.2.2",
+    "sweetalert2": "^11.7.26",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
