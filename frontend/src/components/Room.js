@@ -7,29 +7,30 @@ function Room({ room, fromdate, todate }) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     return (
-        <div className="row bs">
-            <div className="col-md-4">
+        <div className="row bs ">
+            <div className="col-md-4 mt-2 mb-2">
                 <img src={room.imageUrl[0]} className="smalling" />
             </div>
-            <div className="col-md-8">
+            <div className="col-md-8 mt-2 mb-2">
                 <h1>{room.name}</h1>
                 <p>
                 
                     {" "}
+                    <b>
                     <p> Max Count : {room.maxPeople}</p>
                     <p> Phone Number : {room.phoneNumber}</p>
-                    <p> Type : {room.type}</p>
+                    <p> Type : {room.type}</p></b>
                 </p>
 
                 <div style={{ float: "right" }}>
 
                     {(fromdate && todate) && (
                         <Link to={`/book/${room._id}/${fromdate}/${todate}`}>
-                        <button className="btn btn-primary mt-4">Book Now</button>
+                        <button className="btn btn-primary ">Book Now</button>
                     </Link>
                     )}
                     
-                    <button className="btn btn-primary mt-4" onClick={handleShow}>View Details</button>
+                    <button className="btn btn-primary " onClick={handleShow}>View Details</button>
                 </div>
             </div>
 
