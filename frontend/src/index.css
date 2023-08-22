@@ -50,8 +50,15 @@ h1{
 
 .bs{
   box-shadow: rgba(100 112, 115, 0.3) 0px 8px 28px;
-  margin-top: 5px;
-  border-radius: 5px;
+  margin-top: 10px;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.bs1{
+  box-shadow: rgba(100 112, 115, 0.3) 0px 8px 28px;
+  margin-top: 10px;
+  border-radius: 10px;
   padding: 5px;
 }
 
@@ -98,4 +105,15 @@ img{
   background-color: #333; /* Change this to the desired background color */
   color: white; /* Change text color if needed */
 }
+
+.select{
+  margin-top: 25px;
+  margin-left: 190px;
+}
+
+.datefilter{
+ max-width: 350px;
+ }
+
+
 
