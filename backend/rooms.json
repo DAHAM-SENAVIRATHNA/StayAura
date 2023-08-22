@@ -54,5 +54,20 @@
         "maxPeople": 5,
         "phoneNumber": "0712345678",
         "currentBooking": []
+    },
+
+    {
+        "name": "Blue Sky Hotel",
+        "imageUrl": [
+            "https://www.centrepoint.com/Gallery/Silom/Accommodation/SizeS/Silom-Family_Suite-90_sqm.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_OTkkdhmfF2nFNd6k3Vm_E-q-AMOPTFGGBBlb9jDALDKqdO9wZuTLGNgDgLAIJGb7qPw&usqp=CAU",
+            "https://www.centrepoint.com/japan/Gallery/Silom/Accommodation/SizeS/Silom-River_Grand_Deluxe-66_sqm-2.jpg",
+            "https://www.centrepoint.com/Gallery/Silom/Accommodation/SizeS/Silom-One_Bedroom_Grand_Suite-90_sqm-2.jpg"
+        ],
+        "rentPerday": 1800,
+        "type": "Family Suite",
+        "maxPeople": 4,
+        "phoneNumber": "04565164616",
+        "currentBooking": []
     }
 ]

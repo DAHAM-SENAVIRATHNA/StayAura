@@ -15,9 +15,9 @@ const Homescreen = () => {
   const [error, setError] = useState(false);
 
   const [fromDate, setFromDate] = useState();
-  const [toDate, setToDate] = useState();
+  const [toDate, setToDate] = useState('');
   const [searchKey, setSearchKey] = useState('');
-  const [roomType, setRoomType] = useState('all');
+  const [type, setType] = useState('all');
 
   useEffect(() => {
     const fetchData = async () => {
@@ -37,7 +37,7 @@ const Homescreen = () => {
   }, []);
 
   useEffect(() => {
-    // Function to filter rooms whenever searchKey or roomType changes
+    // Function to filter rooms whenever searchKey or type changes
     const filterRooms = () => {
       let filteredRooms = data;
 
@@ -47,15 +47,15 @@ const Homescreen = () => {
         );
       }
 
-      if (roomType !== 'all') {
-        filteredRooms = filteredRooms.filter(room => room.roomType === roomType);
+      if (type !== 'all') {
+        filteredRooms = filteredRooms.filter(room => room.type.toLowerCase() === type.toLowerCase());
       }
 
       setRooms(filteredRooms);
     };
 
-    filterRooms(); // Apply filters when searchKey or roomType changes
-  }, [searchKey, roomType, data]); // Listen for changes in searchKey, roomType, and data
+    filterRooms(); // Apply filters when searchKey or type changes
+  }, [searchKey, type, data]); // Listen for changes in searchKey, type, and data
 
   // Filter by dates and set from and to dates
   function filterByDate(dates) {
@@ -81,15 +81,12 @@ const Homescreen = () => {
           </div>
           <div className="col-md-3">
             <div className='select'>
-              <select
-                className='form-control'
-                value={roomType}
-                onChange={(e) => setRoomType(e.target.value)}
-              >
+              <select className='form-control' value={type} onChange={(e) => setType(e.target.value)}>
                 <option value="all">All</option>
                 <option value="standard">Standard</option>
                 <option value="deluxe">Deluxe</option>
                 <option value="suite">Suite</option>
+                {/* Add more options for other room types here */}
               </select>
             </div>
           </div>
@@ -102,7 +99,10 @@ const Homescreen = () => {
         ) : (
           rooms.map((room) => (
             <div className="col-md-10 mt-4" key={room.id}>
-              <Room room={room} fromdate={fromDate} todate={toDate} />
+              {/* Check room type only if it's not 'all' */}
+              {type === 'all' || room.type.toLowerCase() === type.toLowerCase() ? (
+                <Room room={room} fromdate={fromDate} todate={toDate} />
+              ) : null}
             </div>
           ))
         )}
