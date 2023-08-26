@@ -58,9 +58,11 @@ h1{
 
 .bs1{
   box-shadow: rgba(100 112, 115, 0.3) 0px 8px 28px;
-  margin-top: 10px;
-  border-radius: 10px;
-  padding: 5px;
+  margin-top: 2%;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  margin-left: 5px;
+  padding: 10px;
 }
 
 h1{
@@ -129,4 +131,20 @@ img{
 .profile{
   margin-left:2%;
   margin-top: 2%;
+}
+
+h1.bkt{
+  font-size: medium;
+  font-style: normal;
+  font-weight: 400;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1.profilecard{
+  font-size: 20px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#cancelBooking{
+  margin-left: 435px;
 }
