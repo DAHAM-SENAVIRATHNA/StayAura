@@ -50,8 +50,9 @@ h1{
 
 .bs{
   box-shadow: rgba(100 112, 115, 0.3) 0px 8px 28px;
-  margin-top: 10px;
-  border-radius: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border-radius: 15px;
   padding: 5px;
 }
 
@@ -116,4 +117,16 @@ img{
  }
 
 
+ .footer {
+  background-color: #008080;
+  color: #fff;
+  padding: 5px 0;
+  text-align: center;
+}
 
+
+/* profile screen */
+.profile{
+  margin-left:2%;
+  margin-top: 2%;
+}

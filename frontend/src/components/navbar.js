@@ -31,7 +31,7 @@ function Navbar() {
                                     {user.name}
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="/bookings">Bookings</a>
+                                    <a class="dropdown-item" href="/profile">Profile</a>
                                     <a class="dropdown-item" href="/login" onClick={logout}>Logout</a>
                                 </div>
                             </div>
@@ -54,3 +54,5 @@ function Navbar() {
 }
 
 export default Navbar;
+
+
