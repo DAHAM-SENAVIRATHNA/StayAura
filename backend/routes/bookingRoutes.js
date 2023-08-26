@@ -76,4 +76,23 @@ router.post('/bookroom', async (req, res) => {
   }
 });
 
+
+router.post('/getbookingsbyuserid', async (req, res) => {
+  const { userid } = req.body;
+
+  try {
+    const bookings = await Booking.find({ userid: userid });
+
+    if (!bookings) {
+      return res.status(404).json({ error: 'No bookings found for this user' });
+    }
+
+    res.status(200).json(bookings);
+  } catch (error) {
+    console.error('Error fetching bookings:', error);
+    return res.status(500).json({ error: 'Failed to fetch bookings' });
+  }
+});
+
+
 module.exports = router;

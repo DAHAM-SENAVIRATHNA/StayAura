@@ -13,13 +13,13 @@ const user = JSON.parse(localStorage.getItem("currentUser"))
 
 function ProfileScreen() {
 
-    useEffect(()=>{
-   
-        if(!user){
+    useEffect(() => {
+
+        if (!user) {
             window.location.href = '/login'
         }
     }, [])
-    
+
     return (
         <div className='profile'>
             <Tabs defaultActiveKey="1">
@@ -33,15 +33,15 @@ function ProfileScreen() {
                     key="1"
                 >
                     {/* My Profile */}
-                    <br/>
+                    <br />
                     <h1> Name : {user.name}</h1>
                     <h1> Email : {user.email}</h1>
                     <h1> isAdmin : {user.isAdmin ? 'Yes' : 'No'}</h1>
-            
+
 
                 </TabPane>
                 <TabPane
-                    tab= {
+                    tab={
                         <span>
                             <BookOutlined />
                             Bookings
@@ -49,7 +49,8 @@ function ProfileScreen() {
                     }
                     key="2"
                 >
-                    <MyBookings/>
+                    <h1>My bookings</h1>
+                    {/* <MyBookings /> */}
                 </TabPane>
             </Tabs>
         </div>
@@ -60,8 +61,23 @@ export default ProfileScreen;
 
 
 
-
 export function MyBookings() {
+
+    useEffect(async () => {
+
+
+        try {
+            const rooms = (await axios.post('/api/bookings/getbookingsbyuserid', { userid: user._id })).data
+            console.log(rooms)
+        } catch (error) {
+            console.log(error)
+
+        }
+
+
+
+    }, [])
+
     return (
         <div>
             <h1>My Bookings</h1>
