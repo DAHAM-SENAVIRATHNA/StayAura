@@ -14,7 +14,7 @@ function AdminScreen() {
                     <Bookings />
                 </TabPane>
                 <TabPane tab="Rooms" key="2">
-                    <h1>Rooms</h1>
+                    <Rooms />
                 </TabPane>
                 <TabPane tab="Add Room" key="3">
                     <h1>Add Rooms</h1>
@@ -50,6 +50,8 @@ export function Bookings() {
         fetchBookings();
     }, [])
 
+
+    //Bookings Tab   
     return (
         <div className='row'>
             <div className='col-md-10 ml-2'>
@@ -88,4 +90,65 @@ export function Bookings() {
             </div>
         </div>
     )
+}
+
+//Rooms Tab
+export function Rooms() {
+    const [rooms, setRooms] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState();
+
+    useEffect(() => {
+        async function fetchRooms() {
+            try {
+                const response = await axios.get("/api/rooms/getrooms");
+                console.log("Response data:", response.data); // Add this line to check the data
+                setRooms(response.data);
+                setLoading(false);
+            } catch (error) {
+                console.error(error);
+                setLoading(false);
+                setError(error);
+            }
+        }
+
+        fetchRooms();
+    }, []);
+
+    return (
+        <div className='row'>
+            <div className='col-md-10 ml-2'>
+                <h1><b>Rooms</b></h1>
+                {loading && <Load />}
+                <br />
+
+                <div className="d-flex justify-content-center">
+                    <table className='table table-dark custom-table ml-4'>
+                        <thead className='bs1'>
+                            <tr>
+                                <th>Room ID</th>
+                                <th>Hotel Name</th>
+                                <th>Type</th>
+                                <th>Rent per Day</th>
+                                <th>Max persons</th>
+                                <th>Phone No</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {rooms.length > 0 && rooms.map(room => (
+                                <tr key={room._id}>
+                                    <td>{room._id}</td>
+                                    <td>{room.name}</td>
+                                    <td>{room.type}</td>
+                                    <td>{`LKR `+ room.rentPerday}</td>
+                                    <td>{room.maxPeople}</td>
+                                    <td>{room.phoneNumber}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    );
 }
