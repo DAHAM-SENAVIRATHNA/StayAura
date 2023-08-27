@@ -52,11 +52,39 @@ export function Bookings() {
 
     return (
         <div className='row'>
-            <div className='col-md-10'>
+            <div className='col-md-10 ml-2'>
                 <h1><b>Bookings</b></h1>
                 {loading && <Load />}
-                <br/>
+                <br />
+
                 {bookings.length > 0 && <h1>Total Bookings: {bookings.length}</h1>}
+                <div className="d-flex justify-content-center">
+                    <table className='table table-dark custom-table ml-4'>
+                        <thead className='bs1'>
+                            <tr>
+                                <th>Booking ID</th>
+                                <th>User ID</th>
+                                <th>Room</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        {bookings.length && (bookings.map(booking => {
+                            return <tr>
+                                <td>{booking._id}</td>
+                                <td>{booking.userid}</td>
+                                <td>{booking.room}</td>
+                                <td>{booking.fromdate}</td>
+                                <td>{booking.todate}</td>
+                                <td><b style={{ color: booking.status === 'cancelled' ? 'red' : 'green' }}>{booking.status}</b></td>
+
+                            </tr>
+                        }))}
+
+                        <tbody></tbody>
+                    </table>
+                </div>
             </div>
         </div>
     )

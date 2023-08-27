@@ -150,3 +150,22 @@ h1.profilecard{
   margin-top: 10px;
   margin-left: 520px;
 }
+
+
+
+.custom-table th, .custom-table td {
+  padding: 10px;
+  text-align: center;
+}
+
+.custom-table th {
+  background-color: #008080; /* Header background color */
+  color: rgb(251, 251, 251); /* Header text color */
+}
+
+.custom-table tr,td {
+  background-color: #2c2c2c; /* Alternate row background color */
+}
+
+
+
