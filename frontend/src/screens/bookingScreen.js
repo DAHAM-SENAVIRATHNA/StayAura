@@ -21,8 +21,16 @@ function Bookingscreen() {
   const totaldays = todates.diff(fromdates, 'days') + 1;
 
   useEffect(() => {
-    const fetchData = async () => {
+    if (!localStorage.getItem('currentUser')) {
+      // Redirect to login page if not logged in
+      window.location.href = '/login';
+      return;
+    }
+
+      const fetchData = async () => {
+
       try {
+        
         const response = await axios.post('/api/rooms/getroombyid', { roomid });
         const rentPerday = response.data.rentPerday;
         const calculatedTotalAmount = rentPerday * totaldays;
@@ -132,10 +140,6 @@ async function onToken(token){
                 </StripeCheckout>
             </div>
           </div>
-
-
-
-
         </div>
       )}
     </div>
