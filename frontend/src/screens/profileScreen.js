@@ -24,6 +24,7 @@ function ProfileScreen() {
     }, [])
 
     return (
+
         // Profile section of profile page
         <section className="vh-200" >
             <div className="container py-5 h-400">
@@ -69,6 +70,12 @@ function ProfileScreen() {
                                                         <h6>Email</h6>
                                                         <p className="text-muted">{user.email}</p>
                                                     </div>
+
+                                                    <div className="col-6 mb-3">
+                                                        <h6>User Type</h6>
+                                                        <p>{user.isAdmin ? 'Admin' : 'User'}</p>                                                    </div>
+                                                    
+
 
                                                 </div>
 
@@ -139,7 +146,7 @@ export function MyBookings() {
             const result = await (await axios.post("/api/bookings/cancelbooking", { bookingid, roomid })).data;
             console.log(result);
             setLoading(false);
-            Swal.fire('congrats', 'Your bookings has cancelled' , 'success').then(result=>{
+            Swal.fire('congrats', 'Your bookings has cancelled', 'success').then(result => {
                 window.location.reload()
             })
         } catch (error) {
@@ -174,9 +181,11 @@ export function MyBookings() {
                             </h1>
                             <h1 className="bkt">Total Amount: {`Rs. ` + booking.totalamount}</h1>
                             <h1 className="bkt">
-                                Status: <b>{booking.status === 'booked' ? 'Confirmed' : 'Cancelled'}</b>
+                            Status: <b style={{ color: booking.status === 'cancelled' ? 'red' : 'green' }}>{booking.status}</b>
+
                             </h1>
-                            <div className="text-right">
+
+                            {booking.status !== 'cancelled' && <div className="text-right">
                                 <button
                                     id="cancelBooking"
                                     className="btn btn-primary"
@@ -186,7 +195,7 @@ export function MyBookings() {
                                 >
                                     Cancel Booking
                                 </button>
-                            </div>
+                            </div>}
                         </div>
 
                     ))}
