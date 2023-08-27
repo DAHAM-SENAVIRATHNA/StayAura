@@ -6,6 +6,7 @@ const moment = require('moment');
 const { v4: uuidv4 } = require('uuid');
 const stripe = require('stripe')('sk_test_51Ngl6bBXDV8VVuFBQs86b4ZeOLkWVuuZ2uevWn396M8HAPfbTWiaAslujgJ25rppCpHUD6CKCLLrXj2kxfHJMfDS00DdkAkfCY'); // Replace with your actual Stripe secret key
 
+
 router.post('/bookroom', async (req, res) => {
   const { roomid, fromdate, todate, totalamount, totaldays, userid, username, token } = req.body;
 
@@ -30,6 +31,7 @@ router.post('/bookroom', async (req, res) => {
 
     if (payment) {
       try {
+        
         const room = await RoomModel.findById(roomid);
 
         if (!room) {
@@ -92,7 +94,33 @@ router.post('/getbookingsbyuserid', async (req, res) => {
     console.error('Error fetching bookings:', error);
     return res.status(500).json({ error: 'Failed to fetch bookings' });
   }
+
 });
+
+router.post('/cancelbooking', async (req, res) => {
+  const { bookingid, roomid } = req.body;
+
+  try {
+    const bookingitem = await Booking.findOne({ _id: bookingid });
+
+    bookingitem.status = 'cancelled';
+
+    await bookingitem.save();
+
+    const room = await RoomModel.findOne({ _id: roomid }); // Use RoomModel here
+
+    const bookings = room.currentBooking;
+
+    const temp = bookings.filter(booking => booking.bookingid.toString() !== bookingid);
+    room.currentBooking = temp;
+    await room.save();
+
+    res.send("Your Booking Cancelled Successfully");
+  } catch (error) {
+    return res.status(400).json({ error });
+  }
+});
+
 
 
 module.exports = router;

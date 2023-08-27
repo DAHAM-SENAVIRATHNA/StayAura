@@ -9,7 +9,7 @@ const usersRoute = require("./routes/userRoute");
 const bookingsRoute = require("./routes/bookingRoutes");
 
 app.use(cors())
-app.use(express.json())
+app.use(express.json());
 app.use('/api/rooms', roomsRoute);
 app.use('/api/users', usersRoute);
 app.use('/api/bookings', bookingsRoute);

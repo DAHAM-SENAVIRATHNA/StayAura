@@ -70,7 +70,7 @@ async function onToken(token){
     const response = await axios.post('/api/bookings/bookroom', bookingDetails, token);
     setLoading(false);
     sweet.fire('Congratulations', 'Your Room Booked Successfully', 'success').then(result=>{
-      window.location.href= '/bookings'
+      window.location.href= '/profile'
     })
       } catch (error) {
     setLoading(false);

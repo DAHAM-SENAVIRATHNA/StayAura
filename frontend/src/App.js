@@ -19,11 +19,6 @@ function App() {
           <Route path='/register' element={<RegisterScreen/>} />
           <Route path='/login' element={<LoginScreen/>} />
           <Route path='/profile' element={<ProfileScreen/>} />
-
-          
-
-          
-
         </Routes>
       </BrowserRouter>
     </div>
