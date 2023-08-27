@@ -3,6 +3,7 @@ import axios from "axios"
 import { Tabs } from 'antd';
 import { ProfileOutlined, BookOutlined } from '@ant-design/icons';
 import Load from '../components/load';
+import Swal from 'sweetalert2';
 import Error from '../components/error';
 
 const { TabPane } = Tabs;
@@ -138,11 +139,14 @@ export function MyBookings() {
             const result = await (await axios.post("/api/bookings/cancelbooking", { bookingid, roomid })).data;
             console.log(result);
             setLoading(false);
+            Swal.fire('congrats', 'Your bookings has cancelled' , 'success').then(result=>{
+                window.location.reload()
+            })
         } catch (error) {
             console.error(error);
             setLoading(false);
             // Display an error message to the user
-            setError("Failed to cancel booking");
+            Swal.fire('Oops', 'something went wrong', 'eror')
         }
     }
 
