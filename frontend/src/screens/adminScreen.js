@@ -369,8 +369,8 @@ return (
                     value={type}
                     onChange={(e) => setType(e.target.value)}
                 >
-                    <option value="Standard">Standard</option>
                     <option value="Suite">Suite</option>
+                    <option value="Standard">Standard</option>
                     <option value="Deluxe">Deluxe</option>
                     <option value="Family Suite">Family Suite</option>
                 </select>
