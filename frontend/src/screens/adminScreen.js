@@ -6,6 +6,19 @@ import Error from '../components/error';
 const { TabPane } = Tabs;
 
 function AdminScreen() {
+
+    useEffect(()=>{
+
+    if(!JSON.parse(localStorage.getItem("currentUser")).isAdmin)
+
+        window.location.href = '/home'
+
+    }
+    ,[] )
+
+
+
+
     return (
         <div className='m-4 bs1'>
             <h1 className='text-center' style={{ fontSize: '30px' }}><b>Admin Panel</b></h1>
