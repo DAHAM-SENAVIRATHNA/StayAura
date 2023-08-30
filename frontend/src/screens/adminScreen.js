@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Tabs } from 'antd';
 import Load from '../components/load';
 import Error from '../components/error';
+import sweet from 'sweetalert2';
 const { TabPane } = Tabs;
 
 
@@ -233,6 +234,8 @@ export function Users() {
 
 
 export function AddRoom() {
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState();
     // State variables for form fields
     const [name, setName] = useState('');
     const [imageUrl1, setImageUrl1] = useState('');
@@ -257,9 +260,9 @@ export function AddRoom() {
       };
   
       try {
+        setLoading(true);
         const response = await axios.post("/api/rooms/addroom", newRoom);
         
-        console.log("Response data:", response.data);
   
         // Clear form fields after successful submission
         setName('');
@@ -271,18 +274,20 @@ export function AddRoom() {
         setType('');
         setMaxPeople('');
         setPhoneNumber('');
+        setLoading(false);
+        sweet.fire('Congratulation', "New room added successfully")
+        window.location.href = '/admin'
       } catch (error) {
         console.error(error);
+        setLoading(false);
+        sweet.fire('Oops', "Failed to add new room,  try again!")
+
       }
     }
   
-
-  
-
-
-   
 return (
     <div className="container mt-2">
+        {loading && <Load />}
         <h3>Add Room</h3>
         <form onSubmit={addRoom}>
             <div className="form-group">
@@ -369,8 +374,9 @@ return (
                     value={type}
                     onChange={(e) => setType(e.target.value)}
                 >
-                    <option value="Suite">Suite</option>
+                    <option value="Standard">Select room type..</option>
                     <option value="Standard">Standard</option>
+                    <option value="Suite">Suite</option>
                     <option value="Deluxe">Deluxe</option>
                     <option value="Family Suite">Family Suite</option>
                 </select>
