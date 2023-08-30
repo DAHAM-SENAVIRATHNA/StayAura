@@ -41,6 +41,21 @@ router.post('/login', async (req, res) => {
   }
 });
 
+// get Users to admin pannel
+router.get("/getallusers", async(req,res)=>{
+  try {
+    const user = await User.find()
+    res.send(user)
+  } catch (error) {
+    res.status(400).json({ error});
+
+  }
+})
+
+
+
+
+
 module.exports = router;
 
 

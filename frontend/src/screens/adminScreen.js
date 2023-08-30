@@ -20,7 +20,7 @@ function AdminScreen() {
                     <h1>Add Rooms</h1>
                 </TabPane>
                 <TabPane tab="Users" key="4">
-                    <h1>Users</h1>
+                    <Users />
                 </TabPane>
             </Tabs>
         </div>
@@ -140,7 +140,7 @@ export function Rooms() {
                                     <td>{room._id}</td>
                                     <td>{room.name}</td>
                                     <td>{room.type}</td>
-                                    <td>{`LKR `+ room.rentPerday}</td>
+                                    <td>{`LKR ` + room.rentPerday}</td>
                                     <td>{room.maxPeople}</td>
                                     <td>{room.phoneNumber}</td>
                                 </tr>
@@ -151,4 +151,67 @@ export function Rooms() {
             </div>
         </div>
     );
+}
+
+
+// Add rooms
+
+export function Users() {
+
+    const [users, setUsers] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState();
+
+    useEffect(() => {
+        async function fetchUsers() {
+            try {
+                const response = await axios.get("/api/users/getallusers");
+                console.log("Response data:", response.data); // Add this line to check the data
+                setUsers(response.data);
+                setLoading(false);
+            } catch (error) {
+                console.error(error);
+                setLoading(false);
+                setError(error);
+            }
+        }
+
+        fetchUsers();
+    }, []);
+
+    return (
+        <div className='row'>
+            <div className='col-md-10 ml-2'>
+                <h1><b>Users</b></h1>
+                {loading && <Load />}
+                <br />
+
+                <div className="d-flex justify-content-center">
+                    <table className='table table-dark custom-table ml-4'>
+                        <thead className='bs1'>
+                            <tr>
+                                <th>User ID</th>
+                                <th>User Name</th>
+                                <th>User Email</th>
+                                <th>Is Admin</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {users.length > 0 && users.map(user => (
+                                <tr key={user._id}>
+                                    <td>{user._id}</td>
+                                    <td>{user.name}</td>
+                                    <td>{user.email}</td>
+                                    <td>{user.isAdmin ? 'Yes' : 'No'}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    )
+
+
 }
