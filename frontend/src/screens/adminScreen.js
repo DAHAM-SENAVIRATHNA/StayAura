@@ -26,7 +26,7 @@ function AdminScreen() {
     return (
         <div className='m-4 bs1'>
             <h2 className='text-center' style={{ fontSize: '35px' }}><b>Admin Panel</b></h2>
-            <Tabs defaultActiveKey='1'  style={{ marginLeft: '12px' }}>
+            <Tabs defaultActiveKey='1' style={{ marginLeft: '12px' }}>
                 <TabPane tab="Bookings" key="1" >
                     <Bookings />
                 </TabPane>
@@ -233,136 +233,174 @@ export function Users() {
 
 
 export function AddRoom() {
-
-    const [name, setname] = useState('');
-    const [rentPerDay, setrentperday] = useState();
-    const [maxPeople, setmaxpeople] = useState();
-    const [phoneNumber, setphonenumber] = useState();
-    const [type, settype] = useState();
-    const [imageUrl1, setimageurl1] = useState();
-    const [imageUrl2, setimageurl2] = useState();
-    const [imageUrl3, setimageurl3] = useState();
-
-
-    function addRoom() {
-        const newroom = {
-            name,
-            imageUrls: [imageUrl1, imageUrl2, imageUrl3],
-            rentPerDay,
-            type,
-            maxPeople,
-            phoneNumber,
-        }
-        console.log(newroom)
+    // State variables for form fields
+    const [name, setName] = useState('');
+    const [imageUrl1, setImageUrl1] = useState('');
+    const [imageUrl2, setImageUrl2] = useState('');
+    const [imageUrl3, setImageUrl3] = useState('');
+    const [imageUrl4, setImageUrl4] = useState('');
+    const [rentPerday, setRentPerDay] = useState('');
+    const [type, setType] = useState('');
+    const [maxPeople, setMaxPeople] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
+  
+    async function addRoom(e) {
+      e.preventDefault(); // Prevent form submission
+  
+      const newRoom = {
+        name,
+        imageUrl: [imageUrl1, imageUrl2, imageUrl3, imageUrl4],
+        rentPerday,
+        type,
+        maxPeople,
+        phoneNumber,
+      };
+  
+      try {
+        const response = await axios.post("/api/rooms/addroom", newRoom);
+        
+        console.log("Response data:", response.data);
+  
+        // Clear form fields after successful submission
+        setName('');
+        setImageUrl1('');
+        setImageUrl2('');
+        setImageUrl3('');
+        setImageUrl4('');
+        setRentPerDay('');
+        setType('');
+        setMaxPeople('');
+        setPhoneNumber('');
+      } catch (error) {
+        console.error(error);
+      }
     }
+  
 
-    return (
-        <div className="container mt-2">
-            <h3>Add Room</h3>
-            <form>
-                <div className="form-group">
-                    <label htmlFor="hotelName">Hotel Name</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        id="hotelName"
-                        placeholder="Enter Hotel Name"
-                        value={name}
-                        onChange={(e) => { setname(e.target.value) }}
-                    />
-                </div>
-                <div className="row">
-                    <div className="col-md-4">
-                        <div className="form-group">
-                            <label htmlFor="image1">Image URL 1</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                id="image1"
-                                placeholder="Enter Image URL 1"
-                                value={imageUrl1}
-                                onChange={(e) => { setimageurl1(e.target.value) }}
-                            />
-                        </div>
-                    </div>
-                    <div className="col-md-4">
-                        <div className="form-group">
-                            <label htmlFor="image2">Image URL 2</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                id="image2"
-                                placeholder="Enter Image URL 2"
-                                value={imageUrl2}
-                                onChange={(e) => { setimageurl2(e.target.value) }}
-                            />
-                        </div>
-                    </div>
-                    <div className="col-md-4">
-                        <div className="form-group">
-                            <label htmlFor="image3">Image URL 3</label>
-                            <input
-                                type="text"
-                                className="form-control"
-                                id="image3"
-                                placeholder="Enter Image URL 3"
-                                value={imageUrl3}
-                                onChange={(e) => { setimageurl3(e.target.value) }}
-                            />
-                        </div>
+  
+
+
+   
+return (
+    <div className="container mt-2">
+        <h3>Add Room</h3>
+        <form onSubmit={addRoom}>
+            <div className="form-group">
+                <label htmlFor="hotelName">Hotel Name</label>
+                <input
+                    type="text"
+                    className="form-control"
+                    id="hotelName"
+                    placeholder="Enter Hotel Name"
+                    value={name}
+                    onChange={(e) => { setName(e.target.value) }}
+                />
+            </div>
+            <div className="row">
+                <div className="col-md-3">
+                    <div className="form-group">
+                        <label htmlFor="image1">Image URL 1</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="image1"
+                            placeholder="Enter Image URL 1"
+                            value={imageUrl1}
+                            onChange={(e) => { setImageUrl1(e.target.value) }}
+                        />
                     </div>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="rentPerDay">Rent Per Day</label>
-                    <input
-                        type="number"
-                        className="form-control"
-                        id="rentPerDay"
-                        placeholder="Enter Rent Per Day"
-                        value={rentPerDay}
-                        onChange={(e) => { setrentperday(e.target.value) }}
-                    />
+                <div className="col-md-3">
+                    <div className="form-group">
+                        <label htmlFor="image2">Image URL 2</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="image2"
+                            placeholder="Enter Image URL 2"
+                            value={imageUrl2}
+                            onChange={(e) => { setImageUrl2(e.target.value) }}
+                        />
+                    </div>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="roomtype">Type</label>
-                    <select
-                        className="form-control"
-                        id="roomtype"
-                        value={type}
-                        onChange={(e) => settype(e.target.value)}
-                    >
-                        <option value="Standard">Standard</option>
-                        <option value="Suite">Suite</option>
-                        <option value="Deluxe">Deluxe</option>
-                        <option value="Family Suite">Family Suite</option>
-                    </select>
+                <div className="col-md-3">
+                    <div className="form-group">
+                        <label htmlFor="image3">Image URL 3</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="image3"
+                            placeholder="Enter Image URL 3"
+                            value={imageUrl3}
+                            onChange={(e) => { setImageUrl3(e.target.value) }}
+                        />
+                    </div>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="maxPeople">Maximum People</label>
-                    <input
-                        type="number"
-                        className="form-control"
-                        id="maxPeople"
-                        placeholder="Enter Maximum People"
-                        value={maxPeople}
-                        onChange={(e) => { setmaxpeople(e.target.value) }}
-                    />
+                <div className="col-md-3">
+                    <div className="form-group">
+                        <label htmlFor="image4">Image URL 4</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            id="image4"
+                            placeholder="Enter Image URL 4"
+                            value={imageUrl4}
+                            onChange={(e) => { setImageUrl4(e.target.value) }}
+                        />
+                    </div>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="phoneNumber">Phone Number</label>
-                    <input
-                        type="tel"
-                        className="form-control"
-                        id="phoneNumber"
-                        placeholder="Enter Phone Number"
-                        value={phoneNumber}
-                        onChange={(e) => { setphonenumber(e.target.value) }}
-                    />
-                </div>
-                <button type="submit" className="btn btn-primary" onClick={AddRoom}>Add Room</button>
-            </form>
-        </div>
-    );
+            </div>
+            <div className="form-group">
+                <label htmlFor="rentPerDay">Rent Per Day</label>
+                <input
+                    type="number"
+                    className="form-control"
+                    id="rentPerDay"
+                    placeholder="Enter Rent Per Day"
+                    value={rentPerday}
+                    onChange={(e) => { setRentPerDay(e.target.value) }}
+                />
+            </div>
+            <div className="form-group">
+                <label htmlFor="roomtype">Type</label>
+                <select
+                    className="form-control"
+                    id="roomtype"
+                    value={type}
+                    onChange={(e) => setType(e.target.value)}
+                >
+                    <option value="Standard">Standard</option>
+                    <option value="Suite">Suite</option>
+                    <option value="Deluxe">Deluxe</option>
+                    <option value="Family Suite">Family Suite</option>
+                </select>
+            </div>
+            <div className="form-group">
+                <label htmlFor="maxPeople">Maximum People</label>
+                <input
+                    type="number"
+                    className="form-control"
+                    id="maxPeople"
+                    placeholder="Enter Maximum People"
+                    value={maxPeople}
+                    onChange={(e) => { setMaxPeople(e.target.value) }}
+                />
+            </div>
+            <div className="form-group">
+                <label htmlFor="phoneNumber">Phone Number</label>
+                <input
+                    type="tel"
+                    className="form-control"
+                    id="phoneNumber"
+                    placeholder="Enter Phone Number"
+                    value={phoneNumber}
+                    onChange={(e) => { setPhoneNumber(e.target.value) }}
+                />
+            </div>
+            <button type="submit" className="btn btn-primary" >Add Room</button>
+        </form>
+    </div>
+);
 
 }
 

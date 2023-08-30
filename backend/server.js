@@ -15,5 +15,6 @@ app.use('/api/users', usersRoute);
 app.use('/api/bookings', bookingsRoute);
 
 
+
 app.listen(5000, () =>
     console.log("node server is started"));
