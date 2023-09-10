@@ -7,8 +7,6 @@ import sweet from 'sweetalert2';
 const { TabPane } = Tabs;
 
 
-
-
 //Admin Panel Main screen component
 function AdminScreen() {
 
@@ -20,9 +18,6 @@ function AdminScreen() {
 
     }
         , [])
-
-
-
 
     return (
         <div className='m-4 bs1'>
@@ -231,8 +226,6 @@ export function Users() {
 }
 
 // Add Room Tab Component
-
-
 export function AddRoom() {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState();
@@ -374,7 +367,7 @@ return (
                     value={type}
                     onChange={(e) => setType(e.target.value)}
                 >
-                    <option value="Standard">Select room type..</option>
+                    <option value="dummy">Select room type..</option>
                     <option value="Standard">Standard</option>
                     <option value="Suite">Suite</option>
                     <option value="Deluxe">Deluxe</option>

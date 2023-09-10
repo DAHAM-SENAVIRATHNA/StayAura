@@ -64,35 +64,45 @@ const Homescreen = () => {
   }
 
   return (
-    <div className='container'>
-      <div className='selectors'>
-        <div className='row mt-4'>
-          <div className='col-md-4 mt-4'>
-            <RangePicker className='datefilter' format='DD-MM-YYYY' onChange={filterByDate} />
-          </div>
-          <div className="col-md-4">
-            <input
-              type='text'
-              className='form-control'
-              placeholder='Search rooms by name'
-              value={searchKey}
-              onChange={(e) => setSearchKey(e.target.value)}
-            />
-          </div>
-          <div className="col-md-3">
-            <div className='select'>
-              <select className='form-control' value={type} onChange={(e) => setType(e.target.value)}>
-                <option value="all">All</option>
-                <option value="standard">Standard</option>
-                <option value="deluxe">Deluxe</option>
-                <option value="suite">Suite</option>
-                {/* Add more options for other room types here */}
-              </select>
+    <div className='container-searchbar'>
+      {/* Background Image for the First Half */}
+      <div className="background-image">
+        <div className='selectors'>
+          <div className='row mt-4'>
+            <div className='col-md-4 mt-4'>
+              <RangePicker className='datefilter' format='DD-MM-YYYY' onChange={filterByDate} />
+            </div>
+            <div className="col-md-4">
+              <div className='serch-room'>
+              <input
+                type='text'
+                className='form-control' 
+                placeholder='Search rooms by hotel name'
+                value={searchKey}
+                onChange={(e) => setSearchKey(e.target.value)}
+              />
+              </div>
+            </div>
+            <div className="col-md-3">
+              <div className='select'>
+                <select className='form-control' value={type} onChange={(e) => setType(e.target.value)}>
+                  <option value="all">All</option>
+                  <option value="standard">Standard</option>
+                  <option value="deluxe">Deluxe</option>
+                  <option value="suite">Suite</option>
+                  {/* Add more options for other room types here */}
+                </select>
+              </div>
             </div>
           </div>
         </div>
+        
+        {/* Animated Text in the Middle */}
+        <div className="welcome-text">
+          <h1 className="animated-text"><b>Vist Sri Lanka, Where Every Stay Becomes an Unforgettable Journey</b></h1>
+        </div>
       </div>
-
+      {/* Room Listings */}
       <div className='row justify-content-center mt-8'>
         {loading ? (
           <h1 style={{ marginTop: '250px' }}><Load /></h1>
@@ -110,5 +120,4 @@ const Homescreen = () => {
     </div>
   );
 };
-
 export default Homescreen;

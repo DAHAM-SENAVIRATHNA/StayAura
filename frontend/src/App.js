@@ -1,5 +1,6 @@
 import './App.css';
 import Navbar from './components/navbar';
+
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomeScreen from './screens/homeScreen';
 import BookingScreen from './screens/bookingScreen';
