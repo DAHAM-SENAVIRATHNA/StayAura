@@ -20,7 +20,7 @@ function LoginScreen() {
             const response = (await axios.post('/api/users/login', user)).data;
             localStorage.setItem('currentUser', JSON.stringify(response.user));
             setLoading(false);
-            window.location.href = '/home';
+            window.location.href = '/';
 
         } catch (error) {
             setLoading(false);
@@ -70,5 +70,6 @@ function LoginScreen() {
         </div>
     );
 }
+
 
 export default LoginScreen;
